@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum University {
+  DU
+  IPU
+}
+
+enum Semester {
+  SEM1
+  SEM2
+  SEM3
+  SEM4
+  SEM5
+  SEM6
+  SEM7
+  SEM8
+}
+
+enum DocType {
+  UPLOADED
+  GENERATED
+}
+
+enum EmbeddingStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model Document {
+  id               String           @id @default(cuid())
+  userId           String
+  title            String
+  docId            String
+  type             DocType          @default(UPLOADED)
+  tags             String[]
+  embeddingStatus  EmbeddingStatus  @default(PENDING)
+  university       University?
+  course           String?
+  semester         Semester?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}
