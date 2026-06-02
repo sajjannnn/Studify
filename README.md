@@ -29,13 +29,17 @@ AI-powered study platform for college students. Upload PDFs of textbooks, genera
         │ (port 4001) │ │ (port 4002) │ │  (port 4003) │
         │ Postgres    │ │ Postgres    │ │  Postgres+S3 │
         │             │ │ Gemini/Groq │ │              │
-        └─────────────┘ └─────────────┘ └──────┬────────┘
-                                               │
-                                        ┌──────▼──────┐
-                                        │  Worker      │
-                                        │  (Redis)    │
-                                        │  Pinecone   │
-                                        └─────────────┘
+         └─────────────┘ └─────────────┘ └──────┬────────┘
+                                                │
+                                          ┌────▼───────┐
+                                          │  BullMQ    │
+                                          │  (Redis)   │
+                                          └────│───────┘
+                                                │
+                                         ┌──────▼──────┐
+                                         │  Worker      │
+                                         │  Pinecone   │
+                                         └─────────────┘
 ```
 
 - **Frontend** — React 19 + Vite + TypeScript + React Query + Tailwind v4 + Framer Motion
@@ -44,11 +48,11 @@ AI-powered study platform for college students. Upload PDFs of textbooks, genera
 - **Notes Service** — PDF upload (S3), document CRUD, bookmarks
 - **Search Service** — Feed, document search, university/course/semester filters
 - **Workspace Service** — RAG chat (Groq), community summaries (Gemini 2.5 Flash), AI workspace
-- **Worker** — Async embedding jobs (pdf-parse → chunk → Pinecone)
+- **Worker** — Async embedding jobs via BullMQ (Redis) — pdf-parse → chunk → Pinecone
 
 ## Features
 
-- **PDF Upload & Management** — Upload textbooks, auto-embed text chunks into Pinecone
+- **PDF Upload & Management** — Upload textbooks, auto-embed text chunks into Pinecone via BullMQ job queue
 - **Chat with Documents** — Ask questions about any PDF; answers cite exact pages with sources
 - **Community Summaries** — Generate and share PDF summaries using Gemini 2.5 Flash; edit, delete, rate‑limited
 - **Explore Feed** — Browse public notes with university/course/semester filters
@@ -123,6 +127,7 @@ docker exec studify-search npx prisma migrate deploy
 | Database | PostgreSQL (Prisma ORM), Pinecone (vectors), Redis (jobs) |
 | AI | Gemini 2.5 Flash (summaries), Groq / Llama 3 (chat + RAG) |
 | Storage | AWS S3 (PDFs) |
+| Job Queue | BullMQ (Redis) |
 | Auth | JWT (bcrypt + jsonwebtoken) |
 | Load Balancer | NGINX (round‑robin, 3 auth instances) |
 | Orchestration | Docker Compose |
