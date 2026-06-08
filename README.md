@@ -2,6 +2,10 @@
 
 AI-powered study platform for college students. Upload PDFs of textbooks, generate notes with RAG, create community summaries, and chat with your documents.
 
+<img width="1179" height="671" alt="image" src="https://github.com/user-attachments/assets/91097d3f-8c08-41a5-9d5c-7bcf586671f8" />
+
+
+
 ## Architecture
 
 ```
@@ -53,15 +57,31 @@ AI-powered study platform for college students. Upload PDFs of textbooks, genera
 ## Features
 
 - **PDF Upload & Management** — Upload textbooks, auto-embed text chunks into Pinecone via BullMQ job queue
+  <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-50-26" src="https://github.com/user-attachments/assets/d72cd532-a1ee-4cad-9158-b7439549a7d7" />
 - **Chat with Documents** — Ask questions about any PDF; answers cite exact pages with sources
+  <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-52-31" src="https://github.com/user-attachments/assets/85f0e734-d152-4ebb-968a-a46c2ce4b293" />
 - **Community Summaries** — Generate and share PDF summaries using Gemini 2.5 Flash; edit, delete, rate‑limited
+ <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-41-35" src="https://github.com/user-attachments/assets/20d9c171-09a0-4a8c-a4b8-17f8960ef756" />
+
 - **Explore Feed** — Browse public notes with university/course/semester filters
+  <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-41-24" src="https://github.com/user-attachments/assets/6405d64a-2513-4ad5-b364-e7878b3e8385" />
+
 - **Bookmarks** — Save public notes for quick access
+
+  <img width="1805" height="871" alt="ChatGPT Image Jun 8, 2026, 06_58_42 PM" src="https://github.com/user-attachments/assets/e9db3937-b0c7-4167-9599-3271a72b1c37" />
+
+ <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-43-15" src="https://github.com/user-attachments/assets/eee0e511-d862-4200-89af-9a4888076c0b" />
+
 - **Split View** — View PDF and chat side-by-side on the note detail page
 - **Edit Documents** — Update document titles inline
 - **Onboarding Flow** — Select university/course/semester on first signup
+<img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-50-18" src="https://github.com/user-attachments/assets/88ddf17e-ff57-4576-8c8a-675628c417d1" />
+
 - **Dashboard Stats** — View shared notes count, summary count, and unique topics
+ <img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-41-13" src="https://github.com/user-attachments/assets/f5d69a00-1125-4edf-bae0-05ed80567366" />
+
 - **PDF Download** — Print any summary as PDF via browser print dialog
+<img width="1920" height="1080" alt="Screenshot from 2026-06-08 18-42-50" src="https://github.com/user-attachments/assets/e3cc2c08-112e-41dd-8495-d2928b579531" />
 
 ## Getting Started
 
